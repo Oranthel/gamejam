@@ -1,0 +1,12 @@
+[gd_scene format=3 uid="uid://6eorop5fyokm"]
+
+[ext_resource type="Script" uid="uid://csh3r71nplmse" path="res://act1/PickupUI.gd" id="1_ui"]
+[ext_resource type="Texture2D" uid="uid://bsj5sok3xwwa" path="res://art/ui/92016438143242094AC8E6B5752B9E3C.png" id="2_kx7v4"]
+
+[node name="PickupUI" type="Node2D" unique_id=2070156856]
+script = ExtResource("1_ui")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=979971450]
+z_index = 10
+scale = Vector2(0.12, 0.12)
+texture = ExtResource("2_kx7v4")

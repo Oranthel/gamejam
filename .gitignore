@@ -1,0 +1,34 @@
+# Godot 4
+.godot/
+.import/
+export_presets.cfg
+export_presets.uid
+
+# Godot 导入缓存
+*.import
+.import/
+
+# Godot 元数据
+.mono/
+.data_*/
+.uid
+
+# OS
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# IDE
+.vscode/
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.swp
+*.swo
+*~
+
+# Build output
+build/
+dist/
+bin/
