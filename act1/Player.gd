@@ -35,27 +35,33 @@ func _ready() -> void:
 
 
 func _unhandled_input(event: InputEvent) -> void:
-	if event is InputEventMouseButton \
+	# 鼠标左键 或 空格键 都可以切换造型
+	var is_left_click: bool = event is InputEventMouseButton \
 			and event.pressed \
-			and event.button_index == MOUSE_BUTTON_LEFT:
-		if not can_move:
-			# 激活前：逐个切换皮肤 + 跳到预设位置
-			if skins.size() == 0:
-				return
-			if current_skin_index < 0:
-				click_count = 1
-				_apply_skin(0)
-				_teleport_to_index(0)
-			elif click_count < skins.size():
-				click_count += 1
-				_apply_skin(click_count - 1)
-				_teleport_to_index(click_count - 1)
-				if click_count >= skins.size():
-					can_move = true
-					activated.emit()
-		else:
-			# 已激活：皮肤锁定，点击无效
-			pass
+			and event.button_index == MOUSE_BUTTON_LEFT
+	var is_space: bool = event is InputEventKey \
+			and event.pressed \
+			and event.keycode == KEY_SPACE
+	if not (is_left_click or is_space):
+		return
+	if not can_move:
+		# 激活前：逐个切换皮肤 + 跳到预设位置
+		if skins.size() == 0:
+			return
+		if current_skin_index < 0:
+			click_count = 1
+			_apply_skin(0)
+			_teleport_to_index(0)
+		elif click_count < skins.size():
+			click_count += 1
+			_apply_skin(click_count - 1)
+			_teleport_to_index(click_count - 1)
+			if click_count >= skins.size():
+				can_move = true
+				activated.emit()
+	else:
+		# 已激活：皮肤锁定，点击无效
+		pass
 
 
 func _teleport_to_index(index: int) -> void:

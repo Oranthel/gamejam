@@ -14,11 +14,14 @@ var picked_items: int = 0
 var door_ui_shown: bool = false
 
 @onready var player: Player = $Player
-@onready var hint: Label = $Hint
-@onready var door_ui: DoorUI = $DoorUI
+@onready var hint: Label = get_node_or_null("Hint")
+@onready var door_ui: DoorUI = get_node_or_null("DoorUI")
+@onready var inventory: Inventory = get_node_or_null("Inventory")
 
 
 func _ready() -> void:
+	# 开头 BGM（延续自菜单/开场）
+	AudioManager.play_bgm(AudioManager.BGM_OPENING)
 	backpacks = $Backpacks.get_children()
 	player.activated.connect(_on_player_activated)
 	for bp in backpacks:
@@ -105,20 +108,32 @@ func _try_pickup_nearby() -> void:
 
 
 func _on_item_player_entered(it: Item) -> void:
+	if not is_instance_valid(it) or it.is_picked:
+		return
 	it.show_ui()
 
 
 func _on_item_player_exited(it: Item) -> void:
+	if not is_instance_valid(it):
+		return
 	it.hide_ui()
 
 
 func _on_item_picked(it: Item) -> void:
+	# 收集物品所有 sprite texture 到背包
+	var textures := it.get_sprite_textures()
+	if inventory:
+		inventory.add_item_textures(textures)
 	picked_items += 1
-	# 捡走一个物品后，检查剩余物品：玩家可能已在其区域内但 body_entered 不会重新触发
+	# 捡走一个物品后，检查剩余物品（跳过已被释放/已拾取的）
+	_cleanup_items_array()
 	for other in items:
+		if not is_instance_valid(other):
+			continue
 		if other is Item and not other.is_picked and other.unlocked:
-			for body in other.get_overlapping_bodies():
-				if body is Player:
+			var overlapping: Array = other.get_overlapping_bodies()
+			for body in overlapping:
+				if body is Player and is_instance_valid(body):
 					other.show_ui()
 					break
 	# 全部拾取完，显示门 UI
@@ -126,3 +141,12 @@ func _on_item_picked(it: Item) -> void:
 		door_ui_shown = true
 		if door_ui:
 			door_ui.show_ui()
+
+
+# 从 items 数组里移除已经被销毁（queue_free后）的节点，避免崩溃
+func _cleanup_items_array() -> void:
+	var alive: Array = []
+	for node in items:
+		if is_instance_valid(node):
+			alive.append(node)
+	items = alive

@@ -1,0 +1,146 @@
+[gd_scene load_steps=3 format=3]
+
+[ext_resource type="Script" path="res://systems/StatusBar.gd" id="1_sb"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bar"]
+bg_color = Color(0.05, 0.05, 0.08, 0.85)
+border_width_bottom = 1
+border_color = Color(0.45, 0.45, 0.55, 1)
+
+[node name="StatusBar" type="CanvasLayer"]
+script = ExtResource("1_sb")
+
+[node name="Panel" type="Panel" parent="."]
+anchor_right = 1.0
+offset_bottom = 48.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bar")
+
+[node name="Margin" type="MarginContainer" parent="Panel"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 6
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 6
+
+[node name="HBox" type="HBoxContainer" parent="Panel/Margin"]
+theme_override_constants/separation = 18
+
+[node name="DayLabel" type="Label" parent="Panel/Margin/HBox"]
+theme_override_font_sizes/font_size = 22
+text = "距离联考 -- 天"
+
+[node name="ErosionLabel" type="Label" parent="Panel/Margin/HBox"]
+theme_override_font_sizes/font_size = 17
+text = "侵蚀 10/100"
+
+[node name="ErosionBar" type="ProgressBar" parent="Panel/Margin/HBox"]
+size_flags_horizontal = 3
+max_value = 100.0
+value = 10.0
+show_percentage = false
+
+[node name="MoodLabel" type="Label" parent="Panel/Margin/HBox"]
+theme_override_font_sizes/font_size = 17
+text = "心情 0"
+
+[node name="AbilityLabel" type="Label" parent="Panel/Margin/HBox"]
+theme_override_font_sizes/font_size = 17
+text = "能力 5"
+
+[node name="MenuBtn" type="Button" parent="Panel/Margin/HBox"]
+theme_override_font_sizes/font_size = 15
+text = "菜单"
+
+[node name="HistoryBtn" type="Button" parent="Panel/Margin/HBox"]
+theme_override_font_sizes/font_size = 15
+text = "回看"
+
+[node name="MenuPopup" type="PopupPanel" parent="."]
+title = "菜单"
+size = Vector2i(440, 560)
+
+[node name="VBox" type="VBoxContainer" parent="MenuPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 20.0
+offset_top = 16.0
+offset_right = -20.0
+offset_bottom = -16.0
+theme_override_constants/separation = 10
+
+[node name="ModeBox" type="HBoxContainer" parent="MenuPopup/VBox"]
+
+[node name="SaveModeBtn" type="Button" parent="MenuPopup/VBox/ModeBox"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "存档"
+toggle_mode = true
+button_pressed = true
+
+[node name="LoadModeBtn" type="Button" parent="MenuPopup/VBox/ModeBox"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "读档"
+toggle_mode = true
+
+[node name="DeleteModeBtn" type="Button" parent="MenuPopup/VBox/ModeBox"]
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+text = "删除"
+toggle_mode = true
+
+[node name="Slot1" type="Button" parent="MenuPopup/VBox"]
+custom_minimum_size = Vector2(0, 46)
+theme_override_font_sizes/font_size = 16
+text = "存档位 1"
+
+[node name="Slot2" type="Button" parent="MenuPopup/VBox"]
+custom_minimum_size = Vector2(0, 46)
+theme_override_font_sizes/font_size = 16
+text = "存档位 2"
+
+[node name="Slot3" type="Button" parent="MenuPopup/VBox"]
+custom_minimum_size = Vector2(0, 46)
+theme_override_font_sizes/font_size = 16
+text = "存档位 3"
+
+[node name="TitleBtn" type="Button" parent="MenuPopup/VBox"]
+text = "回主界面"
+
+[node name="CloseBtn" type="Button" parent="MenuPopup/VBox"]
+text = "关闭"
+
+[node name="HistoryPopup" type="PopupPanel" parent="."]
+title = "历史文本"
+size = Vector2i(960, 760)
+
+[node name="Bg" type="ColorRect" parent="HistoryPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0.08, 0.08, 0.1, 1)
+
+[node name="HVBox" type="VBoxContainer" parent="HistoryPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 16.0
+offset_top = 12.0
+offset_right = -16.0
+offset_bottom = -12.0
+theme_override_constants/separation = 8
+
+[node name="Scroll" type="ScrollContainer" parent="HistoryPopup/HVBox"]
+size_flags_vertical = 3
+
+[node name="Body" type="RichTextLabel" parent="HistoryPopup/HVBox/Scroll"]
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_font_sizes/normal_font_size = 18
+bbcode_enabled = true
+fit_content = true
+
+[node name="CloseBtn2" type="Button" parent="HistoryPopup/HVBox"]
+text = "关闭"

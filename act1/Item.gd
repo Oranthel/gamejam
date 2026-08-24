@@ -69,3 +69,12 @@ func pick_up() -> void:
 
 func unlock() -> void:
 	unlocked = true
+
+
+## 返回所有 Sprite2D 子节点的 texture（用于背包显示）
+func get_sprite_textures() -> Array:
+	var textures: Array = []
+	for child in get_children():
+		if child is Sprite2D and child.texture != null:
+			textures.append(child.texture)
+	return textures

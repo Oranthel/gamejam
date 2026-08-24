@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://w01iohvi0aii"]
+
+[ext_resource type="Script" uid="uid://bs4vov0fbunrv" path="res://intro/IntroManager.gd" id="1_mgr"]
+[ext_resource type="Script" uid="uid://cbsovix4gaxtb" path="res://intro/EraseEffect.gd" id="2_erase"]
+
+[node name="Intro" type="Node2D" unique_id=1481807993]
+script = ExtResource("1_mgr")
+
+[node name="Background" type="ColorRect" parent="." unique_id=517610775]
+z_index = -1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
+
+[node name="SceneSpriteA" type="Sprite2D" parent="." unique_id=300211900]
+modulate = Color(1, 1, 1, 0)
+centered = false
+
+[node name="SceneSpriteB" type="Sprite2D" parent="." unique_id=1115887446]
+modulate = Color(1, 1, 1, 0)
+centered = false
+
+[node name="EraseEffect" type="Node2D" parent="." unique_id=915187970]
+script = ExtResource("2_erase")
+
+[node name="ZoomCenterMarker" type="Marker2D" parent="." unique_id=173506994]
+position = Vector2(1101, 421)
+gizmo_extents = 48.0

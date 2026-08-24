@@ -1,0 +1,1736 @@
+{
+  "project": {
+    "name": "GameJam_剧情流程模板_第一版",
+    "source": "剧情.doc（Day1-Day3）",
+    "time_rule": {
+      "chapter_is_not_calendar_day": true,
+      "exam_countdown": {
+        "DAY_01": 70,
+        "DAY_02": 60,
+        "DAY_03": 50,
+        "DAY_04": null,
+        "DAY_05": null,
+        "DAY_06": null,
+        "DAY_07": null
+      }
+    },
+    "variables": {
+      "stress": "隐藏值",
+      "mood": "隐藏值",
+      "ability": "隐藏值",
+      "note": "原稿明确提示前三回合数值仅供参考，需合计后再确定，故此版本不计算最终总值。"
+    }
+  },
+  "naming_rule": {
+    "chapter": "DAY_01",
+    "scene": "SCENE_D01_DORM",
+    "event": "EV_D01_001",
+    "dialogue": "D_D01_001",
+    "character": "CHAR_MAIN",
+    "background": "BG_D01_DORM",
+    "prop": "PROP_PHONE",
+    "option": "OPT_D01_001",
+    "minigame": "MG_D01_EAT"
+  },
+  "resource_priority": [
+    {
+      "priority": "P0",
+      "definition": "首要：没有这些资源，Day1-3主流程无法跑通",
+      "resources": [
+        {
+          "type": "背景",
+          "name": "游戏开始/木桌木纹",
+          "id": "BG_START_DESK",
+          "use": "开始游戏绘画界面；后续木纹缩小转宿舍木门"
+        },
+        {
+          "type": "背景",
+          "name": "宿舍木门",
+          "id": "BG_DORM_DOOR",
+          "use": "Day1开门、白光、70天提示"
+        },
+        {
+          "type": "背景",
+          "name": "画室小地图",
+          "id": "BG_STUDIO_MAP",
+          "use": "Day1/Day2/Day3多次使用"
+        },
+        {
+          "type": "背景",
+          "name": "画室",
+          "id": "BG_STUDIO",
+          "use": "三天核心场景"
+        },
+        {
+          "type": "背景",
+          "name": "宿舍小地图",
+          "id": "BG_DORM_MAP",
+          "use": "三天核心场景"
+        },
+        {
+          "type": "背景",
+          "name": "画室走廊",
+          "id": "BG_STUDIO_CORRIDOR",
+          "use": "Day1午饭后、Day3小A对话等"
+        },
+        {
+          "type": "背景",
+          "name": "面对画架/画纸视角",
+          "id": "BG_EASEL_VIEW",
+          "use": "大量绘画流程共用"
+        },
+        {
+          "type": "背景",
+          "name": "水房/洗手池",
+          "id": "BG_WATER_ROOM",
+          "use": "接水、洗脸等"
+        },
+        {
+          "type": "背景",
+          "name": "超市/货架",
+          "id": "BG_SUPERMARKET",
+          "use": "Day3购买关东煮/画材"
+        },
+        {
+          "type": "背景",
+          "name": "餐桌/饭桌",
+          "id": "BG_DINING_TABLE",
+          "use": "吃饭/泡面"
+        },
+        {
+          "type": "人物",
+          "name": "主角",
+          "id": "CHAR_MAIN",
+          "use": "三天全程"
+        },
+        {
+          "type": "人物",
+          "name": "朋友/室友1",
+          "id": "CHAR_FRIEND",
+          "use": "三天大量对话"
+        },
+        {
+          "type": "人物",
+          "name": "小A/室友3",
+          "id": "CHAR_A",
+          "use": "Day1作为空床、Day3正式出场"
+        },
+        {
+          "type": "人物",
+          "name": "小B/室友2",
+          "id": "CHAR_B",
+          "use": "Day2宿舍、Day3早晨"
+        },
+        {
+          "type": "人物",
+          "name": "老师",
+          "id": "CHAR_TEACHER",
+          "use": "三天大量教学/批画"
+        },
+        {
+          "type": "人物",
+          "name": "母亲",
+          "id": "CHAR_MOTHER",
+          "use": "Day3电话"
+        },
+        {
+          "type": "道具",
+          "name": "画包/背包",
+          "id": "PROP_BACKPACK",
+          "use": "开场及Day3画材流程"
+        },
+        {
+          "type": "道具",
+          "name": "手机",
+          "id": "PROP_PHONE",
+          "use": "外卖/微信/刷视频/电话"
+        },
+        {
+          "type": "道具",
+          "name": "平板",
+          "id": "PROP_TABLET",
+          "use": "绘画/二次元小人"
+        },
+        {
+          "type": "道具",
+          "name": "画板/画纸",
+          "id": "PROP_EASEL_PAPER",
+          "use": "核心绘画交互"
+        },
+        {
+          "type": "道具",
+          "name": "水桶",
+          "id": "PROP_BUCKET",
+          "use": "接水/换水"
+        },
+        {
+          "type": "道具",
+          "name": "胶带",
+          "id": "PROP_TAPE",
+          "use": "Day1/Day2绘画准备"
+        },
+        {
+          "type": "道具",
+          "name": "耳机/耳机仓",
+          "id": "PROP_EARBUDS",
+          "use": "Day2"
+        },
+        {
+          "type": "道具",
+          "name": "喷壶",
+          "id": "PROP_SPRAY_BOTTLE",
+          "use": "Day3"
+        },
+        {
+          "type": "道具",
+          "name": "刮刀",
+          "id": "PROP_PALETTE_KNIFE",
+          "use": "Day3"
+        },
+        {
+          "type": "道具",
+          "name": "颜料盒/颜料",
+          "id": "PROP_PAINT_BOX",
+          "use": "Day3"
+        },
+        {
+          "type": "道具",
+          "name": "矿泉水",
+          "id": "PROP_BOTTLED_WATER",
+          "use": "Day3"
+        },
+        {
+          "type": "道具",
+          "name": "关东煮福袋",
+          "id": "PROP_ODEN_BAG",
+          "use": "Day3"
+        },
+        {
+          "type": "道具",
+          "name": "橡皮/炭笔",
+          "id": "PROP_ERASER_CHARCOAL",
+          "use": "Day3购买"
+        },
+        {
+          "type": "UI",
+          "name": "对话框",
+          "id": "UI_DIALOGUE",
+          "use": "三天核心"
+        },
+        {
+          "type": "UI",
+          "name": "选项按钮",
+          "id": "UI_OPTION",
+          "use": "三天分支"
+        }
+      ]
+    },
+    {
+      "priority": "P1",
+      "definition": "第二级：主流程可先用占位/简化实现，但会影响交互和体验",
+      "resources": [
+        {
+          "type": "人物",
+          "name": "同学/群众黑影",
+          "id": "CHAR_CLASSMATE_SHADOW",
+          "use": "部分成绩/课堂台词"
+        },
+        {
+          "type": "人物",
+          "name": "小C/小D黑影",
+          "id": "CHAR_C_D_SHADOW",
+          "use": "Day3搬班"
+        },
+        {
+          "type": "道具",
+          "name": "包子/外卖/泡面/烤肠",
+          "id": "PROP_FOOD_SET",
+          "use": "多次饮食流程"
+        },
+        {
+          "type": "UI",
+          "name": "电子表/时钟",
+          "id": "UI_CLOCK",
+          "use": "三天核心时间跳转"
+        },
+        {
+          "type": "UI",
+          "name": "成绩单",
+          "id": "UI_SCOREBOARD",
+          "use": "Day2/Day3"
+        },
+        {
+          "type": "UI",
+          "name": "背包九宫格",
+          "id": "UI_BACKPACK_GRID",
+          "use": "Day3"
+        },
+        {
+          "type": "小游戏",
+          "name": "吃饭小游戏",
+          "id": "MG_EAT",
+          "use": "Day1/Day3"
+        },
+        {
+          "type": "小游戏",
+          "name": "贴胶带",
+          "id": "MG_TAPE",
+          "use": "Day1/Day2"
+        },
+        {
+          "type": "小游戏",
+          "name": "二次元小人擦除绘画",
+          "id": "MG_ANIME_DRAW",
+          "use": "Day1"
+        },
+        {
+          "type": "小游戏",
+          "name": "接水流程",
+          "id": "MG_WATER",
+          "use": "Day2/Day3"
+        },
+        {
+          "type": "小游戏",
+          "name": "色彩绘画",
+          "id": "MG_COLOR_PAINT",
+          "use": "Day2/Day3"
+        },
+        {
+          "type": "小游戏",
+          "name": "头像/素描流程",
+          "id": "MG_SKETCH",
+          "use": "三天"
+        },
+        {
+          "type": "小游戏",
+          "name": "颜料搅拌",
+          "id": "MG_MIX_PAINT",
+          "use": "Day3"
+        },
+        {
+          "type": "小游戏",
+          "name": "颜料记忆购买",
+          "id": "MG_PAINT_MEMORY",
+          "use": "Day3"
+        },
+        {
+          "type": "小游戏",
+          "name": "画材选择",
+          "id": "MG_ART_SUPPLIES",
+          "use": "Day3"
+        }
+      ]
+    },
+    {
+      "priority": "P2",
+      "definition": "第三级：表现增强、彩蛋或后期替换素材",
+      "resources": [
+        {
+          "type": "素材",
+          "name": "作品图/素描结果",
+          "id": "ART_WORK_RESULTS",
+          "use": "按分支需要不同结果"
+        },
+        {
+          "type": "素材",
+          "name": "表情包/聊天贴图",
+          "id": "ART_CHAT_STICKERS",
+          "use": "部分微信/朋友对话"
+        },
+        {
+          "type": "素材",
+          "name": "弹幕文字/旧作品",
+          "id": "ART_MEMORY_OVERLAY",
+          "use": "Day2回忆段落"
+        }
+      ]
+    }
+  ],
+  "days": [
+    {
+      "chapter_id": "DAY_01",
+      "game_day": 1,
+      "exam_countdown": 70,
+      "scenes": [
+        {
+          "scene_id": "SCENE_D01_START",
+          "name": "开场绘画与宿舍门",
+          "backgrounds": [
+            "BG_START_DESK",
+            "BG_DORM_DOOR"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D01_001",
+              "type": "dialogue",
+              "trigger": "START_GAME",
+              "dialogue": [
+                {
+                  "speaker": "SYSTEM",
+                  "text": "请绘制一张你认为美丽的画作"
+                }
+              ],
+              "next": "EV_D01_001b"
+            },
+            {
+              "event_id": "EV_D01_001b",
+              "type": "minigame",
+              "minigame": "MG_DRAW_FREE",
+              "next": "EV_D01_002"
+            },
+            {
+              "event_id": "EV_D01_002",
+              "type": "transition",
+              "trigger": "DRAW_COMPLETE",
+              "actions": [
+                "画纸被拿走",
+                "木纹背景缩小为宿舍木门",
+                "主角背画包打开门",
+                "门开关状态切换"
+              ],
+              "ui": [
+                "显示距离联考还有：70天"
+              ],
+              "next": "EV_D01_003"
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D01_STUDIO_MORNING",
+          "name": "Day1上午画室",
+          "backgrounds": [
+            "BG_STUDIO_MAP",
+            "BG_EASEL_VIEW"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D01_003",
+              "type": "dialogue",
+              "trigger": "ENTER_STUDIO",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "好紧张啊，虽然已经有画了快要两个月了，但还是总觉得没底..."
+                },
+                {
+                  "speaker": "CHAR_TEACHER",
+                  "text": "不要再想着画自己喜欢的东西了，联考喜欢什么，你就画什么，现在再不懂就没机会懂了!"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "os:又这么说...从刚来画室就那么说"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "上午要做些什么呢...画久了反而越来越不想画啊..."
+                }
+              ],
+              "next": "EV_D01_003b"
+            },
+            {
+              "event_id": "EV_D01_003b",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D01_MORNING_PRACTICE",
+                  "text": "练习专业课",
+                  "effects": {
+                    "stress": 1,
+                    "ability": 1
+                  },
+                  "next": "EV_D01_004"
+                },
+                {
+                  "option_id": "OPT_D01_MINE",
+                  "text": "画自己喜欢的",
+                  "effects": {
+                    "mood": 1
+                  },
+                  "next": "EV_D01_005"
+                }
+              ]
+            },
+            {
+              "event_id": "EV_D01_004",
+              "type": "explore",
+              "next": "EV_D01_LUNCH",
+              "notes": "近处NPC可交互；可点击月考成绩单；原稿建议设置按钮跳过探索阶段。"
+            },
+            {
+              "event_id": "EV_D01_005",
+              "type": "explore",
+              "next": "EV_D01_LUNCH",
+              "notes": "近处NPC可交互；点击主角下方文字框可出现奇思妙想。"
+            },
+            {
+              "event_id": "EV_D01_LUNCH",
+              "type": "transition",
+              "trigger": "TIME_SKIP",
+              "ui": [
+                "时钟旋转/电子表变化",
+                "白屏仅展示时间变化"
+              ],
+              "next": "EV_D01_006"
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D01_LUNCH",
+          "name": "Day1午饭",
+          "backgrounds": [
+            "BG_ELEVATOR",
+            "BG_DINING_TABLE",
+            "BG_STUDIO_CORRIDOR"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D01_006",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "啊，总算下课了/啊，下课了啊。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "你点外卖了?还是吃食堂?"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "我好像忘记点了.../（课中点击手机触发点外卖）啊，我点过了。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "我(也)点了外卖，陪我取一趟然后回寝室吃吧。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "那走吧。"
+                }
+              ],
+              "next": "EV_D01_007"
+            },
+            {
+              "event_id": "EV_D01_007",
+              "type": "item_get",
+              "items": [
+                "PROP_FOOD_SET"
+              ],
+              "next": "EV_D01_008"
+            },
+            {
+              "event_id": "EV_D01_008",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "小 A 怎么没有一起吃?"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "ta 说 ta 没画完，中午先不吃了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "...好努力。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "画画这东西，七分天注定，三分靠打拼吧，反正人家努力挺有回报的。"
+                }
+              ],
+              "next": "EV_D01_009"
+            },
+            {
+              "event_id": "EV_D01_009",
+              "type": "minigame",
+              "minigame": "MG_EAT",
+              "optional": true,
+              "notes": "原稿设想为麻辣烫抓取式吃饭小游戏；七回合点外卖并吃饱可有隐藏小结局；具体实现待定。",
+              "next": "EV_D01_DORM"
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D01_DORM_NOON",
+          "name": "Day1午休宿舍",
+          "backgrounds": [
+            "BG_ELEVATOR",
+            "BG_DORM_MAP"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D01_DORM",
+              "type": "explore",
+              "notes": "床1朋友、床2室友2、床3小A空铺、床4主角；床2点击触发zzz；朋友自动归位床1玩手机。",
+              "next": "EV_D01_REST_CHOICE"
+            },
+            {
+              "event_id": "EV_D01_REST_CHOICE",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D01_SLEEP",
+                  "text": "躺床上睡一小时",
+                  "effects": {
+                    "ability": 1
+                  },
+                  "next": "EV_D01_AFTERNOON"
+                },
+                {
+                  "option_id": "OPT_D01_PHONE",
+                  "text": "玩一个小时手机",
+                  "effects": {
+                    "mood": 1
+                  },
+                  "next": "EV_D01_AFTERNOON"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D01_AFTERNOON",
+          "name": "Day1下午课程",
+          "backgrounds": [
+            "BG_EASEL_VIEW"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D01_TAPE",
+              "type": "minigame",
+              "minigame": "MG_TAPE",
+              "next": "EV_D01_EXAM_START"
+            },
+            {
+              "event_id": "EV_D01_EXAM_START",
+              "type": "transition",
+              "ui": [
+                "时钟跳转20分钟"
+              ],
+              "next": "EV_D01_EXAM_RESULT"
+            },
+            {
+              "event_id": "EV_D01_EXAM_RESULT",
+              "type": "conditional_result",
+              "condition": "rest_choice",
+              "results": [
+                {
+                  "if": "OPT_D01_PHONE",
+                  "result": "较差但看得出底子的素描"
+                },
+                {
+                  "if": "OPT_D01_SLEEP",
+                  "result": "中上等素描，略有个人画风"
+                }
+              ],
+              "next": "EV_D01_HANDIN"
+            },
+            {
+              "event_id": "EV_D01_HANDIN",
+              "type": "interaction",
+              "interaction": "点击屏幕任意处15次交卷",
+              "next": "EV_D01_EVENING_CHOICE"
+            },
+            {
+              "event_id": "EV_D01_EVENING_CHOICE",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D01_DRAFT",
+                  "text": "老老实实起稿好了..",
+                  "effects": {
+                    "stress": 1,
+                    "ability": 1
+                  },
+                  "next": "EV_D01_NIGHT_CLASS"
+                },
+                {
+                  "option_id": "OPT_D01_CHAT",
+                  "text": "来和朋友畅聊一小时吧！",
+                  "effects": {},
+                  "next": "EV_D01_WECHAT"
+                },
+                {
+                  "option_id": "OPT_D01_ANIME",
+                  "text": "何不画一点二次元小人？！",
+                  "effects": {
+                    "mood": 1
+                  },
+                  "next": "EV_D01_ANIME"
+                }
+              ]
+            },
+            {
+              "event_id": "EV_D01_WECHAT",
+              "type": "transition",
+              "ui": [
+                "微信页面"
+              ],
+              "next": "EV_D01_PHONE_CHECK"
+            },
+            {
+              "event_id": "EV_D01_PHONE_CHECK",
+              "type": "conditional_event",
+              "condition": "teacher_catches_phone",
+              "next": "EV_D01_NIGHT_CLASS"
+            },
+            {
+              "event_id": "EV_D01_ANIME",
+              "type": "minigame",
+              "minigame": "MG_ANIME_DRAW",
+              "next": "EV_D01_NIGHT_CLASS"
+            },
+            {
+              "event_id": "EV_D01_NIGHT_CLASS",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D01_BURN",
+                  "text": "两小时爆肝",
+                  "effects": {
+                    "stress": 1,
+                    "ability": 1
+                  },
+                  "next": "EV_D01_SKETCH"
+                },
+                {
+                  "option_id": "OPT_D01_SLOPPY",
+                  "text": "敷衍了事",
+                  "effects": {},
+                  "next": "EV_D01_SKETCH"
+                }
+              ]
+            },
+            {
+              "event_id": "EV_D01_SKETCH",
+              "type": "sleep_time_skip",
+              "notes": "速写课；主角睡过两节课；电子表按30分钟规律跳到两小时。",
+              "next": "EV_D01_END"
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D01_END",
+          "name": "Day1回寝睡觉",
+          "backgrounds": [
+            "BG_DORM_MAP"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D01_END",
+              "type": "sleep",
+              "next": "DAY_02"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "DAY_02",
+      "game_day": 2,
+      "exam_countdown": 60,
+      "scenes": [
+        {
+          "scene_id": "SCENE_D02_DORM_MORNING",
+          "name": "Day2早晨宿舍",
+          "backgrounds": [
+            "BG_DORM_MAP"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D02_001",
+              "type": "explore",
+              "notes": "床1朋友未醒；床2小B窗边玩手机；床3小A空铺。",
+              "next": "EV_D02_002"
+            },
+            {
+              "event_id": "EV_D02_002",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "再不起赶不上买早饭了，叫 ta 一下吧。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "不行啊，bro，我醒不来。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "你快点起，去洗漱，不然一会儿买不到超市包子了。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "朋友，我发现我的被子是妖怪。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "？我只看到了你要作妖。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "没有，我说真的。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "你快起床。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "我的被子是蛇妖。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "你快起床。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "它对我使用了绞杀，现在我要安详的死在里边了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "起床。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "别这么说。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "起床。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "别这么说。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "起。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "别这么说..."
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "那我先走了。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "欸欸欸欸欸欸欸——你这人这么较真呢？我起我起。"
+                }
+              ],
+              "next": "EV_D02_003"
+            },
+            {
+              "event_id": "EV_D02_003",
+              "type": "transition",
+              "ui": [
+                "距离联考还有60天",
+                "整体降低约10%饱和度"
+              ],
+              "next": "EV_D02_STUDIO"
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D02_STUDIO",
+          "name": "Day2上午画室",
+          "backgrounds": [
+            "BG_STUDIO",
+            "BG_WATER_ROOM",
+            "BG_EASEL_VIEW"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D02_004",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_TEACHER",
+                  "text": "裱纸吧，照片发群里了，上午画色彩，下午再考一张，好好练。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "昨天不想画，今天也不想画..."
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "唉...明明最开始最喜欢的就是画画了，结果正经开始学的时候却渐渐高兴不起来了..."
+                }
+              ],
+              "next": "EV_D02_WATER"
+            },
+            {
+              "event_id": "EV_D02_WATER",
+              "type": "minigame",
+              "minigame": "MG_WATER",
+              "next": "EV_D02_MORNING_CHOICE"
+            },
+            {
+              "event_id": "EV_D02_MORNING_CHOICE",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D02_PRACTICE",
+                  "text": "还是练一练吧，万一真进步呢。",
+                  "effects": {
+                    "stress": 1,
+                    "ability": 1
+                  },
+                  "next": "EV_D02_TEACHER_COMMENT"
+                },
+                {
+                  "option_id": "OPT_D02_SLOPPY",
+                  "text": "糊弄一下吧，俩月呢，不差这两天。",
+                  "effects": {
+                    "mood": 1
+                  },
+                  "next": "EV_D02_TEACHER_COMMENT"
+                }
+              ]
+            },
+            {
+              "event_id": "EV_D02_TEACHER_COMMENT",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_TEACHER",
+                  "text": "你..."
+                },
+                {
+                  "speaker": "CHAR_TEACHER",
+                  "text": "你画的吧，不丑，但是和联考要的风格吧，有点差距。"
+                },
+                {
+                  "speaker": "CHAR_TEACHER",
+                  "text": "你这，这，这，都得改，你得知道考试的要的是什么，考官想看什么？考题考的是什么？对不对？"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "……好…"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "………我改改。"
+                },
+                {
+                  "speaker": "CHAR_TEACHER",
+                  "text": "哎呀，你都画这么多了，再改也来不及了，你下张再调吧。"
+                },
+                {
+                  "speaker": "CHAR_TEACHER",
+                  "text": "记得我说的，什么得分咱就画什么。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "……好………"
+                }
+              ],
+              "next": "EV_D02_LUNCH"
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D02_LUNCH",
+          "name": "Day2午饭与午休",
+          "backgrounds": [
+            "BG_DINING_TABLE",
+            "BG_ELEVATOR",
+            "BG_DORM_MAP"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D02_LUNCH",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "怎么闷闷不乐的？"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "我们班离超市近，我买到板面了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "………其实也没多大事。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "就是老师让我改画风，贴近联考。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "这咋了？你不喜欢联考画风？"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "也不是……就是有些不适吧，联考画的都是公式，红苹果不会画那就背一个红苹果，黄苹果就背一个黄苹果，背景用什么颜色调也给你固定好……既然我画的不算丑，那为什么不被认可？"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "你想的好多……"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "因为我们都是学生，怎么样分高我们就要干什么，你没有办法，我没有办法，老师也没有办法，这么多年都是按这个方式判分，那学生就按这个方式画。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "倒是很现实……"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "但还是会觉得不高、…"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "你泡面好了，快吃吧。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "…好。"
+                }
+              ],
+              "next": "EV_D02_REST_CHOICE"
+            },
+            {
+              "event_id": "EV_D02_REST_CHOICE",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D02_PHONE",
+                  "text": "玩会手机放松一下心情吧。",
+                  "effects": {
+                    "mood": 1
+                  },
+                  "next": "EV_D02_AFTERNOON"
+                },
+                {
+                  "option_id": "OPT_D02_SLEEP",
+                  "text": "睡一觉，养养精神。",
+                  "effects": {},
+                  "next": "EV_D02_AFTERNOON"
+                },
+                {
+                  "option_id": "OPT_D02_PAINT",
+                  "text": "利用中午时间去练画吧。",
+                  "effects": {
+                    "stress": 2,
+                    "ability": 1
+                  },
+                  "next": "EV_D02_NOON_STUDIO"
+                }
+              ]
+            },
+            {
+              "event_id": "EV_D02_NOON_STUDIO",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "如果我像（3床人名）一样努力，是不是也会进步呢？"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "可能我真的要利用休息时间多练一练…大家都这么努力，如果我不努力的话，那不就是在倒退吗？"
+                }
+              ],
+              "next": "EV_D02_AFTERNOON"
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D02_AFTERNOON",
+          "name": "Day2下午到晚课",
+          "backgrounds": [
+            "BG_STUDIO",
+            "BG_EASEL_VIEW"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D02_005",
+              "type": "minigame",
+              "minigame": "MG_COLOR_PAINT",
+              "notes": "原稿写明色彩小游戏尚未想好，程序结构先预留。",
+              "next": "EV_D02_SCORE"
+            },
+            {
+              "event_id": "EV_D02_SCORE",
+              "type": "conditional_result",
+              "condition": "morning_choice",
+              "results": [
+                {
+                  "if": "OPT_D02_PRACTICE",
+                  "score": 81,
+                  "rank": 11,
+                  "result": "81分、11名"
+                },
+                {
+                  "if": "OPT_D02_SLOPPY",
+                  "score": 78,
+                  "rank": 15,
+                  "result": "78分、15名"
+                }
+              ],
+              "notes": "成绩单：81分、11名；若上一回合糊弄则78分、15名。",
+              "next": "EV_D02_SLEEP_CHOICE"
+            },
+            {
+              "event_id": "EV_D02_SLEEP_CHOICE",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D02_NAP",
+                  "text": "眯一会",
+                  "effects": {},
+                  "next": "EV_D02_DINNER"
+                },
+                {
+                  "option_id": "OPT_D02_PHONE2",
+                  "text": "玩手机",
+                  "effects": {
+                    "mood": 1
+                  },
+                  "next": "EV_D02_DINNER"
+                },
+                {
+                  "option_id": "OPT_D02_DRAW",
+                  "text": "画一会",
+                  "effects": {
+                    "stress": 1,
+                    "ability": 1
+                  },
+                  "next": "EV_D02_DINNER"
+                }
+              ]
+            },
+            {
+              "event_id": "EV_D02_DINNER",
+              "type": "meal",
+              "notes": "外卖或泡面；之后色彩→速写→洗漱→回寝→睡觉。",
+              "next": "DAY_03"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "chapter_id": "DAY_03",
+      "game_day": 3,
+      "exam_countdown": 50,
+      "scenes": [
+        {
+          "scene_id": "SCENE_D03_MORNING",
+          "name": "Day3早晨宿舍与水房",
+          "backgrounds": [
+            "BG_DORM_MAP",
+            "BG_WATER_ROOM",
+            "BG_STUDIO_CORRIDOR"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D03_001",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "自决定早起一小时去画画，到今天，已经九天了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "作息只早了一点点…剩下还是靠闹钟震动震醒…把手机放在枕边，醒了之后马上关掉震动，不然就会叫醒其他室友了…"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "…嘶"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "头有点疼…可能乍惊醒来之后大脑还没有反应过来，起身着急了吧。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "真佩服小 A…如果我也能靠自然醒就起那么早、又能做到精力充沛地画画就好了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "也许要有机会了找他问问有什么秘诀…怎么能做到…"
+                }
+              ],
+              "next": "EV_D03_002"
+            },
+            {
+              "event_id": "EV_D03_002",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "！！"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "好呛！"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "也没人告诉我这厕所有这么新鲜出炉的烟味啊？！"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "算了…每天那么多人躲隔间里吞云吐雾，早该知道早上也有可能有人来的。"
+                },
+                {
+                  "speaker": "CHAR_A",
+                  "text": "不好意思。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "？！是…"
+                },
+                {
+                  "speaker": "CHAR_A",
+                  "text": "抱歉，没看到你也进来了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "没有没有，是我后来的…"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "os：所以他每天压力大的时候就靠这个吗？靠抽烟？？"
+                }
+              ],
+              "next": "EV_D03_003"
+            },
+            {
+              "event_id": "EV_D03_003",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_A",
+                  "text": "先出去吧，你刚刚嗓子不是舒服吗？。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "……好"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "你总抽烟吗？"
+                },
+                {
+                  "speaker": "CHAR_A",
+                  "text": "偶尔。我没有瘾。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "也是，俩月了我都不知道你会抽烟。"
+                },
+                {
+                  "speaker": "CHAR_A",
+                  "text": "我总得避着点你们吧，寝室里面只有我抽烟，我不在寝室里抽就只能在厕所和楼下抽了，被你们看到不好，会劝我戒烟的。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "os：本来就该戒吧……"
+                },
+                {
+                  "speaker": "CHAR_A",
+                  "text": "怎么不说话了？很介意吗？"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "啊啊…没有的事，我是在心里谴责占着厕所坑位抽烟的人。"
+                },
+                {
+                  "speaker": "CHAR_A",
+                  "text": "那样人确实很坏。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "呃……那个什么，那我先回班了。"
+                },
+                {
+                  "speaker": "CHAR_A",
+                  "text": "好，拜拜。"
+                }
+              ],
+              "next": "EV_D03_STUDIO"
+            },
+            {
+              "event_id": "EV_D03_STUDIO",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "又在这画，你打鸡血也该用完了吧，都十天了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "是九天，还没到第十天呢。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "好好好那就九天。画画也不能不吃饭吧，停会儿吧，给你带包子了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "谢谢，多少钱我转你。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "四块，加上昨天的烤肠一共六块。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "行，一会儿转你。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "那我先回自己班了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "你等会，中午点外卖给我也带一份呗，然后钱数发给我。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "行。"
+                }
+              ],
+              "next": "EV_D03_CLASS"
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D03_CLASS",
+          "name": "Day3上午课堂与成绩单",
+          "backgrounds": [
+            "BG_EASEL_VIEW",
+            "BG_STUDIO"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D03_CLASS",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_TEACHER",
+                  "text": "上课了，画素描人头像，今天细致讲一讲，老师做范画得看啊，不能总低头画自己的，那是闭门造车，知道吧，我们都会留时间给你们自己画的，先好好看大屏幕。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "以往这时候都补觉了，这阵子强逼着清醒，好歹是没睡着……能听多少听多少吧。"
+                },
+                {
+                  "speaker": "CHAR_TEACHER",
+                  "text": "还有，今天下午周考，上次周考的成绩也给你们排了排名，成绩单在那。"
+                }
+              ],
+              "next": "EV_D03_SCORE"
+            },
+            {
+              "event_id": "EV_D03_SCORE",
+              "type": "result",
+              "scoreboard": {
+                "score": 83,
+                "rank": 11
+              },
+              "next": "EV_D03_SCORE_CHOICE"
+            },
+            {
+              "event_id": "EV_D03_SCORE_CHOICE",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D03_EXAM_STYLE",
+                  "text": "练联考风格",
+                  "effects": {
+                    "stress": 1,
+                    "ability": 1
+                  },
+                  "next": "EV_D03_PHONE"
+                },
+                {
+                  "option_id": "OPT_D03_OWN_STYLE",
+                  "text": "画自己画风",
+                  "effects": {
+                    "ability": 1
+                  },
+                  "next": "EV_D03_PHONE"
+                },
+                {
+                  "option_id": "OPT_D03_SLACK",
+                  "text": "摸鱼不画了",
+                  "effects": {
+                    "mood": 1
+                  },
+                  "next": "EV_D03_PHONE"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D03_PHONE_CALL",
+          "name": "Day3母亲电话与分支",
+          "backgrounds": [
+            "BG_STUDIO_CORRIDOR"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D03_PHONE",
+              "type": "phone_call",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "怎么样啊？集训。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "…还可以。"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "怎么样是还可以？老师把成绩单发家长群了，我都看得到，可得努力啊。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "我知道的，在努力了…"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "那饭呢？每天好好吃饭啊，用不用妈给你送点妈做的饭菜过去？水果啊什么的有的吃？缺了告诉妈啊妈给你送。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "够吃，你送一趟油费都不少，别来了。"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "总吃外卖不健康啊，少吃点，有食堂吃食堂。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "……食堂不好吃……"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "那都交了钱的怎么就吃不得？"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "好好…知道了，今天先不吃，今天已经点完外卖了。"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "诶呀……好像四十五还是五十吧，别管钱不钱的，食堂做的好歹监控，那外卖不干不净的。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "这么贵，我点外卖一天不一定五十呢。"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "什么外卖，你要吃也别点太便宜的，知道不，越便宜越对身体不好。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "知道啦…～"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "零花钱还够不够？不够了朝妈要。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "还可以，够用。"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "手头还剩多少？"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "一百五。"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "我再给你转三百，你那平时买画材什么的不也用钱吗。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "好，谢谢妈妈……"
+                }
+              ],
+              "next": "EV_D03_PHONE_OPTION"
+            },
+            {
+              "event_id": "EV_D03_PHONE_OPTION",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D03_TUITION",
+                  "text": "询问学费",
+                  "effects": {
+                    "stress": 2
+                  },
+                  "next": "EV_D03_TUITION"
+                },
+                {
+                  "option_id": "OPT_D03_FAMILY",
+                  "text": "询问家中情况",
+                  "effects": {
+                    "mood": 2
+                  },
+                  "next": "EV_D03_FAMILY"
+                }
+              ]
+            },
+            {
+              "event_id": "EV_D03_TUITION",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "那，我能问问，学费多少钱吗。"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "……两三万吧，你安心学，我和你爸都有积蓄，一个集训还是交的起的。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "真的两三万吗？我同学都告诉我要五六万的。"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "诶呀你管它是两三万还是五六万，你妈妈我都交得起，你好好学，考个好大学，那就不辜负这钱，知不知道？"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "…知道了"
+                }
+              ],
+              "next": "EV_D03_AFTER_CALL"
+            },
+            {
+              "event_id": "EV_D03_FAMILY",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "那家里怎么样了，你们都咋样？"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "挺好的啊，你爸这两天休息。要不让他给你带点吃的用的去？"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "不用了我挺好的。"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "担心我们俩啊？你放心吧，我和你爸身体很硬朗的，倒是你那一天天总坐着，腰椎肯定得不舒服，我给你买点坐垫啊靠垫什么的，地址填你们画室，到了我告诉你啊。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "啊，好！谢谢妈妈！"
+                },
+                {
+                  "speaker": "CHAR_MOTHER",
+                  "text": "行了那没事我挂了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "妈妈拜拜。"
+                }
+              ],
+              "next": "EV_D03_AFTER_CALL"
+            },
+            {
+              "event_id": "EV_D03_AFTER_CALL",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "你怎么在这呢，我找你半天。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "我妈给我打电话了，我刚接电话呢。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "噢，阿姨要来画室吗？"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "没有，不来，挺远的呢。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "怪不得，我见你周末都不怎么回家，怎么不找点离家近的画室。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "家附近画室都不太行……我妈要我去点好地方学，再考个好学校。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "也是，大画室确实权威一些，不过我一直待在加强班，也没见过其他老师，嘿嘿。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "你努努力来平行班陪我呗。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "做不到做不到，我这成绩就这样了，我不挣扎了。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "怎么认命了似的……"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "这叫及时行乐，知难而退。比如咱现在就该趁热吃掉外卖，践行这个及时行乐。"
+                }
+              ],
+              "next": "EV_D03_LUNCH_CHOICE"
+            }
+          ]
+        },
+        {
+          "scene_id": "SCENE_D03_LUNCH_AFTERNOON",
+          "name": "Day3午饭、画材购买、晚课",
+          "backgrounds": [
+            "BG_DINING_TABLE",
+            "BG_DORM_MAP",
+            "BG_STUDIO",
+            "BG_SUPERMARKET",
+            "BG_EASEL_VIEW"
+          ],
+          "events": [
+            {
+              "event_id": "EV_D03_LUNCH_CHOICE",
+              "type": "option",
+              "options": [
+                {
+                  "option_id": "OPT_D03_STAY_DRAW",
+                  "text": "你去吧，我不去了，我留下来画一会儿",
+                  "effects": {
+                    "stress": 1,
+                    "ability": 1
+                  },
+                  "next": "EV_D03_STAY_DRAW"
+                },
+                {
+                  "option_id": "OPT_D03_GO_DORM",
+                  "text": "好嘞，走。",
+                  "effects": {},
+                  "next": "EV_D03_DORM_EXPLORE"
+                }
+              ]
+            },
+            {
+              "event_id": "EV_D03_STAY_DRAW",
+              "type": "time_skip",
+              "notes": "留下画一个半点，切换时降低饱和度。",
+              "next": "EV_D03_WEEKLY_EXAM"
+            },
+            {
+              "event_id": "EV_D03_DORM_EXPLORE",
+              "type": "explore",
+              "notes": "平板、朋友床、窗边、门、桌子均可触发OS；桌边进入绘画小互动。",
+              "next": "EV_D03_WEEKLY_EXAM"
+            },
+            {
+              "event_id": "EV_D03_WEEKLY_EXAM",
+              "type": "minigame",
+              "minigame": "MG_SKETCH",
+              "next": "EV_D03_ART_MIX"
+            },
+            {
+              "event_id": "EV_D03_ART_MIX",
+              "type": "minigame",
+              "minigame": "MG_MIX_PAINT",
+              "next": "EV_D03_SUPERMARKET"
+            },
+            {
+              "event_id": "EV_D03_SUPERMARKET",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "四个福袋。"
+                },
+                {
+                  "speaker": "SYSTEM_SHOPKEEPER",
+                  "text": "好。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "啊，顺便再买一点颜料补充装吧。刚才搅颜料的时候都是哪些颜色不足来着？"
+                }
+              ],
+              "next": "EV_D03_PAINT_MEMORY"
+            },
+            {
+              "event_id": "EV_D03_PAINT_MEMORY",
+              "type": "minigame",
+              "minigame": "MG_PAINT_MEMORY",
+              "notes": "10秒记忆6个缺色；失败重新开始；货架摆放与颜料盒一致。",
+              "next": "EV_D03_ART_SUPPLIES"
+            },
+            {
+              "event_id": "EV_D03_ART_SUPPLIES",
+              "type": "minigame",
+              "minigame": "MG_ART_SUPPLIES",
+              "notes": "选择樱花橡皮、老人头橡皮、软中硬尼奥尼炭笔；品牌名按原稿要求适当抹去字母。",
+              "next": "EV_D03_DINNER"
+            },
+            {
+              "event_id": "EV_D03_DINNER",
+              "type": "dialogue",
+              "dialogue": [
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "哇，真是4个福袋啊。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "给。"
+                },
+                {
+                  "speaker": "CHAR_FRIEND",
+                  "text": "点外卖没？没点的话一起吃泡面。"
+                },
+                {
+                  "speaker": "CHAR_MAIN",
+                  "text": "点了，一块吃吧。"
+                }
+              ],
+              "next": "EV_D03_LATE_CLASS"
+            },
+            {
+              "event_id": "EV_D03_LATE_CLASS",
+              "type": "transition",
+              "notes": "晚课开始彻底黑白；后续画面统一出现红色批注；机械制切图回寝室。",
+              "next": "EV_D03_END"
+            },
+            {
+              "event_id": "EV_D03_END",
+              "type": "sleep",
+              "next": "DAY_04"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

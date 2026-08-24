@@ -1,0 +1,14 @@
+[gd_scene load_steps=2 format=3]
+
+[ext_resource type="Script" path="res://act1/Inventory.gd" id="1_inv"]
+
+[node name="Inventory" type="CanvasLayer"]
+script = ExtResource("1_inv")
+
+[node name="Background" type="Sprite2D" parent="."]
+z_index = 100
+
+[node name="Grid" type="GridContainer" parent="."]
+z_index = 101
+position = Vector2(660, 340)
+columns = 5
