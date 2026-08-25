@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://6ayfuadjw4e7" path="res://act2/Act2.gd" id="1_act2"]
 [ext_resource type="PackedScene" path="res://systems/DialogueBox.tscn" id="2_db"]
+[ext_resource type="Texture2D" uid="uid://de8bkppu3tv1e" path="res://art/人物/6776ADD0CF4548E7527D4C8B86C5B32F.png" id="2_qk7rr"]
 [ext_resource type="PackedScene" uid="uid://bp5ukj702f3ps" path="res://systems/OptionBox.tscn" id="3_ob"]
 [ext_resource type="PackedScene" path="res://systems/StatusBar.tscn" id="4_sb"]
 [ext_resource type="Script" uid="uid://dbdajunx24n1o" path="res://act2/Portrait.gd" id="5_p"]
@@ -23,9 +24,12 @@ position = Vector2(960, 540)
 
 [node name="Portrait" type="Sprite2D" parent="." unique_id=59639886]
 z_index = 1
-position = Vector2(1725, 882)
+position = Vector2(1557, 597)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_qk7rr")
 script = ExtResource("5_p")
-target_height = 800.0
+portrait_path = "res://art/人物/6776ADD0CF4548E7527D4C8B86C5B32F.png"
+target_height = 1000.0
 
 [node name="TransitionLayer" type="CanvasLayer" parent="." unique_id=1492215643]
 

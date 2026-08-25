@@ -13,7 +13,6 @@ class_name Player
 @export var walk_fps: float = 10.0
 @export var sprite_scale: float = 0.3
 
-signal skin_changed(index: int)
 signal activated
 
 var current_skin_index: int = -1
@@ -74,18 +73,11 @@ func _teleport_to_index(index: int) -> void:
 	position = pos
 
 
-func _next_skin() -> void:
-	if skins.is_empty():
-		return
-	_apply_skin((current_skin_index + 1) % skins.size())
-
-
 func _apply_skin(index: int) -> void:
 	# 换肤只换贴图，不做 flip（换肤阶段不涉及朝向）
 	current_skin_index = index % max(skins.size(), 1)
 	if sprite:
 		sprite.texture = skins[current_skin_index]
-	skin_changed.emit(current_skin_index)
 
 
 func _physics_process(delta: float) -> void:

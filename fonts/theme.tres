@@ -1,7 +1,11 @@
-[gd_resource type="Theme" load_steps=2 format=3]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://cw67xdp4ntox0"]
 
-[ext_resource type="FontFile" path="res://fonts/NotoSansSC.ttf" id="1_noto"]
+[ext_resource type="FontFile" uid="uid://c7uo8s67thep2" path="res://fonts/NotoSansSC.ttf" id="1_noto"]
+
+[sub_resource type="FontVariation" id="bold_font"]
+base_font = ExtResource("1_noto")
+variation_embolden = 0.7
 
 [resource]
-default_font = ExtResource("1_noto")
-default_font_size = 16
+default_font = SubResource("bold_font")
+default_font_size = 20

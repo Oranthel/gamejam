@@ -30,7 +30,6 @@ var exam_countdown: int = 70   # 距离联考天数（驱动侵蚀 UI 档位）
 
 var current_day: String = ""
 var chosen_options: Dictionary = {}   # event_id -> option_id
-var inventory_items: Array[String] = []
 var flags: Dictionary = {}
 var dialogue_history: Array = []   # 本局对话历史（回看用）
 var seen_options: Array = []        # 已见过的选项组（剧情树解锁用）
@@ -62,10 +61,6 @@ func settle_mood() -> void:
 
 func record_choice(event_id: String, option_id: String) -> void:
 	chosen_options[event_id] = option_id
-
-
-func get_choice(event_id: String) -> String:
-	return chosen_options.get(event_id, "")
 
 
 ## 根据 condition 名查找对应选项（精确映射表）
@@ -116,11 +111,6 @@ func get_flag(flag_name: String) -> bool:
 	return flags.get(flag_name, false)
 
 
-func add_item(item_id: String) -> void:
-	if item_id not in inventory_items:
-		inventory_items.append(item_id)
-
-
 func mark_option_seen(event_id: String) -> void:
 	if event_id != "" and event_id not in seen_options:
 		seen_options.append(event_id)
@@ -133,7 +123,6 @@ func reset() -> void:
 	exam_countdown = 70
 	current_day = ""
 	chosen_options.clear()
-	inventory_items.clear()
 	flags.clear()
 	dialogue_history.clear()
 	seen_options.clear()

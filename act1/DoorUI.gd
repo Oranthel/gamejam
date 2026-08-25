@@ -4,8 +4,6 @@ class_name DoorUI
 
 ## 门旁边的 UI：所有物品拾取后出现，点击跳转下一个场景。
 
-signal clicked
-
 @export var next_scene: String = ""
 @export var click_scale: float = 3.0
 
@@ -62,14 +60,12 @@ func _input(event: InputEvent) -> void:
 		var mouse_pos: Vector2 = get_global_mouse_position()
 		var click_rect: Rect2 = _get_click_rect()
 		if click_rect.has_point(mouse_pos):
-			clicked.emit()
 			if next_scene != "":
 				get_tree().change_scene_to_file(next_scene)
 			var vp := get_viewport()
 			if vp:
 				vp.set_input_as_handled()
 	elif is_space:
-		clicked.emit()
 		if next_scene != "":
 			get_tree().change_scene_to_file(next_scene)
 		var vp := get_viewport()

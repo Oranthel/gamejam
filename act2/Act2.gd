@@ -26,6 +26,9 @@ const PLACEHOLDER_BG := "res://art/待定图.png"
 @onready var background: Sprite2D = $Background
 @onready var transition_label: Label = $TransitionLayer/TransitionLabel
 
+var _desat_mat_bg: ShaderMaterial
+var _desat_mat_portrait: ShaderMaterial
+
 
 func _ready() -> void:
 	# 连接 StoryManager 信号
@@ -51,6 +54,9 @@ func _ready() -> void:
 
 	# 转场/公布文字的淡灰径向渐变底板
 	_setup_transition_backdrop()
+
+	# 去色 shader（最后30天黑白）
+	_setup_desaturation()
 
 	# 日常 BGM（结局时在 _on_ending_started 里切换）
 	AudioManager.play_bgm(AudioManager.BGM_DAILY)
@@ -95,6 +101,18 @@ func _setup_transition_backdrop() -> void:
 	backdrop.offset_right = 120.0
 	backdrop.offset_bottom = 80.0
 	transition_label.add_child(backdrop)
+
+
+func _setup_desaturation() -> void:
+	var shader := load("res://shaders/desaturate.gdshader")
+	_desat_mat_bg = ShaderMaterial.new()
+	_desat_mat_bg.shader = shader
+	background.material = _desat_mat_bg
+	var portrait := get_node_or_null("Portrait")
+	if portrait:
+		_desat_mat_portrait = ShaderMaterial.new()
+		_desat_mat_portrait.shader = shader
+		portrait.material = _desat_mat_portrait
 
 
 func _on_game_ended(ending_id: String) -> void:
@@ -203,6 +221,11 @@ func _on_time_skip(notes: String) -> void:
 
 func _on_day_changed(day_id: String, countdown: int) -> void:
 	print("Act2: 进入 %s，距离联考 %d 天" % [day_id, countdown])
+	var desat: float = 1.0 if countdown <= 30 else 0.0
+	if _desat_mat_bg:
+		_desat_mat_bg.set_shader_parameter("desaturation", desat)
+	if _desat_mat_portrait:
+		_desat_mat_portrait.set_shader_parameter("desaturation", desat)
 
 
 func _on_result(data: Dictionary) -> void:

@@ -36,7 +36,7 @@ func _on_option_requested(options: Array, event_id: String) -> void:
 	for opt in options:
 		var btn = Button.new()
 		btn.text = opt.get("text", "")
-		btn.custom_minimum_size = Vector2(320, 44)
+		btn.custom_minimum_size = Vector2(360, 54)
 		# 按钮样式
 		var normal_sb: StyleBoxFlat = StyleBoxFlat.new()
 		normal_sb.bg_color = _option_bg
@@ -63,7 +63,7 @@ func _on_option_requested(options: Array, event_id: String) -> void:
 		pressed_sb.set_border_width_all(3 if _stage == 4 else 2)
 		btn.add_theme_stylebox_override("pressed", pressed_sb)
 		btn.add_theme_color_override("font_color", _option_text)
-		btn.add_theme_font_size_override("font_size", 18)
+		btn.add_theme_font_size_override("font_size", 22)
 		btn.pressed.connect(_on_button_pressed.bind(opt))
 		btn.mouse_entered.connect(func(): AudioManager.play_sfx(AudioManager.SFX_HOVER))
 		container.add_child(btn)

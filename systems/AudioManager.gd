@@ -104,9 +104,3 @@ func play_sfx(path: String) -> void:
 	else:
 		_sfx.stream = stream
 		_sfx.play()
-
-
-func stop_bgm() -> void:
-	_active.stop()
-	_bgm_a.stop()
-	_bgm_b.stop()

@@ -34,6 +34,8 @@ func _ready() -> void:
 	_prev_ability = GameState.ability
 	_refresh()
 	# 顶部按钮
+	menu_btn.focus_mode = Control.FOCUS_NONE
+	history_btn.focus_mode = Control.FOCUS_NONE
 	menu_btn.pressed.connect(_open_menu)
 	history_btn.pressed.connect(_open_history)
 	# 菜单按钮
@@ -96,12 +98,15 @@ func _on_day_changed(_day_id: String, countdown: int) -> void:
 
 
 func _on_values_changed(erosion: int, mood: int, ability: int) -> void:
+	var slot := 0
 	if _prev_erosion != -999 and erosion != _prev_erosion:
-		_spawn_float("侵蚀 " + _signed(erosion - _prev_erosion), _erosion_color(erosion - _prev_erosion), erosion_label)
+		_spawn_float("侵蚀 " + _signed(erosion - _prev_erosion), _erosion_color(erosion - _prev_erosion), slot)
+		slot += 1
 	if _prev_mood != -999 and mood != _prev_mood:
-		_spawn_float("心情 " + _signed(mood - _prev_mood), _good_color(mood - _prev_mood), mood_label)
+		_spawn_float("心情 " + _signed(mood - _prev_mood), _good_color(mood - _prev_mood), slot)
+		slot += 1
 	if _prev_ability != -999 and ability != _prev_ability:
-		_spawn_float("能力 " + _signed(ability - _prev_ability), _good_color(ability - _prev_ability), ability_label)
+		_spawn_float("能力 " + _signed(ability - _prev_ability), _good_color(ability - _prev_ability), slot)
 	_prev_erosion = erosion
 	_prev_mood = mood
 	_prev_ability = ability
@@ -128,20 +133,24 @@ func _erosion_color(delta: int) -> Color:
 	return Color(1, 0.4, 0.4) if delta > 0 else Color(0.45, 0.95, 0.45)
 
 
-func _spawn_float(text: String, color: Color, anchor: Control) -> void:
+func _spawn_float(text: String, color: Color, slot: int) -> void:
 	var lbl := Label.new()
 	lbl.text = text
-	lbl.add_theme_font_size_override("font_size", 24)
+	lbl.size = Vector2i(400, 50)
+	lbl.add_theme_font_size_override("font_size", 26)
 	lbl.add_theme_color_override("font_color", color)
-	lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 0.9))
-	lbl.add_theme_constant_override("outline_size", 4)
-	lbl.z_index = 20
+	lbl.add_theme_color_override("font_outline_color", Color(0, 0, 0, 1))
+	lbl.add_theme_constant_override("outline_size", 5)
+	lbl.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	lbl.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
+	var base_y := 440 + slot * 70
+	lbl.position = Vector2(960 - 200, base_y)
+	lbl.z_index = 30
 	add_child(lbl)
-	lbl.position = anchor.global_position + Vector2(0, 30)
 	var tw := create_tween()
 	tw.set_parallel(true)
-	tw.tween_property(lbl, "position:y", lbl.position.y + 46.0, 0.8)
-	tw.tween_property(lbl, "modulate:a", 0.0, 0.8)
+	tw.tween_property(lbl, "position:y", base_y - 30.0, 1.4)
+	tw.tween_property(lbl, "modulate:a", 0.0, 1.4)
 	tw.chain().tween_callback(lbl.queue_free)
 
 

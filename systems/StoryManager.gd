@@ -157,8 +157,6 @@ func _process_event(event: Dictionary) -> void:
 			minigame_requested.emit(event.get("minigame", ""), event)
 
 		"item_get":
-			for item in event.get("items", []):
-				GameState.add_item(item)
 			item_get_requested.emit(event.get("items", []))
 
 		"sleep":
